@@ -1,4 +1,5 @@
 describe("Airport", function() {
+  const CAPACITY = 1;
   var airport;
   var plane;
 
@@ -17,5 +18,14 @@ describe("Airport", function() {
     airport.takeoff(plane);
     expect(airport.planes.length).toEqual(0);
   });
+
+  it("should have a default capacity", function() {
+    expect(airport.capacity).toEqual(CAPACITY);
+  });
+
+  it("should not land a plane when the airport is full", function() {
+    airport.land(plane);
+    expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while airport is full")); 
+  });      
 
 });
