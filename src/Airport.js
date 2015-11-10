@@ -3,5 +3,9 @@ function Airport() {
 }
 
 Airport.prototype.land = function(plane) {
-	this.planes.push(plane);
+    this.planes.push(plane);
+};
+
+Airport.prototype.takeoff = function(plane) {
+    this.planes.pop(plane);
 };
