@@ -5,7 +5,7 @@ describe("Airport", function() {
 
   beforeEach(function() {
     airport = new Airport();
-    plane = new Plane();
+    plane = jasmine.createSpy('plane');
   });
 
   it("should be able to ask a plane to land", function() {
@@ -27,5 +27,11 @@ describe("Airport", function() {
     airport.land(plane);
     expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while airport is full")); 
   });      
+
+  // it("should not land a plane when the weather is stormy", function() {
+    
+  //   airport.land(plane);
+  //   expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while airport is full")); 
+  // });      
 
 });
