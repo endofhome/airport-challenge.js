@@ -27,12 +27,15 @@ describe("Airport", function() {
 
   it("should not land a plane when the airport is full", function() {
     airport.land(plane);
-    expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while airport is full")); 
-  });      
+    expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while airport is full"));
+  });
 
   it("should not land a plane when the weather is stormy", function() {
     spyOn(weather,'isStormy').and.returnValue(true);
-    expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while weather is stormy")); 
-  });      
-
+    expect( function(){ airport.land(plane); } ).toThrow(new Error("Cannot land while weather is stormy"));
+  });
+  it('should not be able to take off when the weather is stormy', function() {
+    spyOn(weather,'isStormy').and.returnValue(true);
+    expect( function(){ airport.takeoff(plane); }).toThrow(new Error("Cannot take off while weather is stormy"));
+  });
 });
